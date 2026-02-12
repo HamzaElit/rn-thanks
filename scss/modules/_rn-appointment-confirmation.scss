@@ -172,6 +172,9 @@
     @include md-up {
       gap: 6rem;
     }
+    button {
+      cursor: pointer;
+    }
   }
 
   .rn-ac-calendar-link {
