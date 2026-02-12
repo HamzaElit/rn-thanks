@@ -5,28 +5,23 @@ body {
   position: relative;
 
   .rn-header {
-    position: absolute;
     padding: 1.5rem 0;
-    background: rgba(12, 65, 255, 0.6);
-    backdrop-filter: blur(23px);
+    justify-content: center;
+    background: #0f172a;
     @include lg-up {
-      padding: 3.7rem 0;
-      background: transparent;
-      backdrop-filter: blur(0px);
+      padding: 2.5rem 0;
     }
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 20;
-
     &__logo {
-      height: 2.6rem;
+      height: 2.4rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
       width: auto;
       @include md-up {
-        height: 4rem;
+        height: 3.8rem;
       }
       @include lg-up {
-        height: 5.8rem;
+        height: 4.5rem;
       }
     }
   }
