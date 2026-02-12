@@ -48,7 +48,7 @@
                                     <path d="M20.883 42.0466H20.9056" stroke="#0F172A" stroke-width="5.03552" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                         </div>
-                        <span class="rn-ac-card__text">Sunday, 11 September 2023</span>
+                        <span class="rn-ac-card__text" id="appointment-date">Sunday, 11 September 2023</span>
                     </div>
                     <div class="rn-ac-card__row">
                         <div class="rn-ac-card__icon">
@@ -57,7 +57,7 @@
                                 <path d="M39.554 38.2195L31.7489 33.5617C30.3893 32.756 29.2815 30.8173 29.2815 29.2311V18.9083" stroke="#0F172A" stroke-width="3.77664" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <span class="rn-ac-card__text">08.00 - 09.00 AM</span>
+                        <span class="rn-ac-card__text" id="appointment-time">08.00 - 09.00 AM</span>
                     </div>
                 </div>
             </div>
@@ -68,11 +68,11 @@
                 <p class="rn-ac-next-steps__sub">Damit du entspannt und vorbereitet ins Gespräch gehst.</p>
 
                 <div class="rn-ac-calendars">
-                    <a href="#" class="rn-ac-calendar-link">
+                    <button id="gCalBtn" class="rn-ac-calendar-link">
                         <img src="assets/images/google-calander.svg" alt="Google Calendar">
                         <span>Google</span>
-                    </a>
-                    <a href="#" class="rn-ac-calendar-link">
+                    </button>
+                    <button id="iCalBtn" class="rn-ac-calendar-link">
                         <img src="assets/images/apple-calander.svg" alt="iOS Calendar">
                         <span>IOS</span>
                     </a>
@@ -524,5 +524,154 @@
 </footer>
 <script defer src="assets/js/embla-carousel.umd.js"></script>
 <script defer src="assets/js/custom.js"></script>
+<script>
+    // Extract and display appointment date/time from URL parameters
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventStartTime = urlParams.get('event_start_time');
+        const eventEndTime = urlParams.get('event_end_time');
+        
+        if (eventStartTime && eventEndTime) {
+            try {
+                const startDate = new Date(eventStartTime);
+                const endDate = new Date(eventEndTime);
+                
+                // Format date: "Sunday, 11 September 2023"
+                const dateOptions = { 
+                    weekday: 'long', 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                };
+                const formattedDate = startDate.toLocaleDateString('de-DE', dateOptions);
+                
+                // Format time: "17:40 - 18:00"
+                const timeOptions = { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: false
+                };
+                const startTime = startDate.toLocaleTimeString('de-DE', timeOptions);
+                const endTime = endDate.toLocaleTimeString('de-DE', timeOptions);
+                const formattedTime = `${startTime} - ${endTime}`;
+                
+                // Update the DOM
+                const dateElement = document.getElementById('appointment-date');
+                const timeElement = document.getElementById('appointment-time');
+                
+                if (dateElement) {
+                    dateElement.textContent = formattedDate;
+                }
+                if (timeElement) {
+                    timeElement.textContent = formattedTime;
+                }
+            } catch (error) {
+                console.error('Error parsing appointment date/time:', error);
+            }
+        }
+    })();
+
+    const params = new URLSearchParams(window.location.search);
+    const sdt = params.get("event_start_time");
+    const edt = params.get("event_end_time");
+    const title = params.get("event_type_name") || "";
+
+    const isValidDate = (d) => d instanceof Date && !isNaN(d);
+
+    const startDate = sdt ? new Date(sdt) : null;
+    const endDate = edt ? new Date(edt) : null;
+
+    const duration =
+        startDate && endDate && isValidDate(startDate) && isValidDate(endDate)
+            ? diff_minutes(endDate, startDate)
+            : null;
+
+    const googleCalendar = (sdt, edt, title, details = "", location = "") => {
+        if (!sdt || !edt) return null;
+
+        const validSdt = new Date(sdt).toISOString().replace(/[-:]/g, "");
+        const validEdt = new Date(edt).toISOString().replace(/[-:]/g, "");
+
+        return `https://www.google.com/calendar/event?action=TEMPLATE&text=${encodeURIComponent(
+            title,
+        )}&dates=${validSdt}/${validEdt}&details=${encodeURIComponent(
+            details,
+        )}&location=${encodeURIComponent(location)}`;
+    };
+
+    const gCalBtn = document.querySelector("#gCalBtn");
+    if (gCalBtn && sdt && edt) {
+        gCalBtn.addEventListener("click", () => {
+            const url = googleCalendar(
+                sdt,
+                edt,
+                title,
+                "Bitte notieren Sie hier Fragen, die Sie zur Behandlung haben könnten.",
+            );
+            if (url) window.open(url);
+        });
+    }
+
+    const iCalBtn = document.querySelector("#iCalBtn");
+
+    if (iCalBtn && startDate && duration !== null) {
+        iCalBtn.addEventListener("click", () => {
+            createICalEvent(startDate, duration, title);
+        });
+    }
+
+    function createICalEvent(date, duration, title) {
+        if (!date || duration == null) return;
+
+        const startDate = formatDateToUTC(date);
+        const endDate = formatDateToUTC(new Date(date.getTime() + duration * 60000));
+
+        const content = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Elithair",
+            "CALSCALE:GREGORIAN",
+            "BEGIN:VEVENT",
+            `UID:${createUUID()}`,
+            `DTSTAMP:${formatDateToUTC(new Date())}`,
+            `DTSTART:${startDate}`,
+            `DTEND:${endDate}`,
+            `SUMMARY:${title}`,
+            "DESCRIPTION:Bitte notieren Sie hier Fragen, die Sie zur Behandlung haben könnten.",
+            "END:VEVENT",
+            "END:VCALENDAR",
+        ].join("\r\n");
+
+        const encoded = encodeURI(content).replace(/#/g, "%23").replace(/&/g, "%26");
+
+        window.open(`data:text/calendar;charset=utf8,${encoded}`);
+    }
+
+    function formatDateToUTC(date) {
+        return (
+            date.getUTCFullYear() +
+            ("0" + (date.getUTCMonth() + 1)).slice(-2) +
+            ("0" + date.getUTCDate()).slice(-2) +
+            "T" +
+            ("0" + date.getUTCHours()).slice(-2) +
+            ("0" + date.getUTCMinutes()).slice(-2) +
+            ("0" + date.getUTCSeconds()).slice(-2) +
+            "Z"
+        );
+    }
+
+    function createUUID() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === "x" ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+    }
+
+    function diff_minutes(dt2, dt1) {
+        return Math.abs(Math.round((dt2 - dt1) / 60000));
+    }
+
+</script>
 </body>
 </html>

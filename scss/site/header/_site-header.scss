@@ -6,6 +6,8 @@ body {
 
   .rn-header {
     padding: 1.5rem 0;
+    position: relative;
+    z-index: 55;
     justify-content: center;
     background: #0f172a;
     @include lg-up {

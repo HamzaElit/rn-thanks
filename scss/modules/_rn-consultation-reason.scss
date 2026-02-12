@@ -24,13 +24,12 @@
   .rn-cr-content {
     font-size: 1.4rem; // 14px
     line-height: 1.57; // 22px / 14px approx 1.57
-    max-width: 35.3rem;
+    max-width: 80rem;
     margin: 0 auto;
 
     @include md-up {
       font-size: 2rem;
       line-height: 1.5;
-      max-width: 80rem;
     }
 
     p {

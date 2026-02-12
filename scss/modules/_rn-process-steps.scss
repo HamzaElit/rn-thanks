@@ -1,6 +1,10 @@
-.rh-banner-img{
-  img{
+.rh-banner-img {
+  margin-top: -4px;
+  img {
     width: 100%;
     height: auto;
+  }
+  @include lg-up {
+    margin-top: 0;
   }
 }
