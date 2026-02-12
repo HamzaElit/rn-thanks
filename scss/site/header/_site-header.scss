@@ -1,0 +1,33 @@
+/*----------------------------------
+  HEADER STYLES
+  ---------------------------------------------------------------------------------*/
+body {
+  position: relative;
+
+  .rn-header {
+    position: absolute;
+    padding: 1.5rem 0;
+    background: rgba(12, 65, 255, 0.6);
+    backdrop-filter: blur(23px);
+    @include lg-up {
+      padding: 3.7rem 0;
+      background: transparent;
+      backdrop-filter: blur(0px);
+    }
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+
+    &__logo {
+      height: 2.6rem;
+      width: auto;
+      @include md-up {
+        height: 4rem;
+      }
+      @include lg-up {
+        height: 5.8rem;
+      }
+    }
+  }
+}

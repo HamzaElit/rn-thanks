@@ -1,0 +1,145 @@
+.rn-faq {
+  padding: 6rem 0;
+  background-color: #F0F7FF;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+
+    @include lg-up {
+      font-size: 4rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @include lg-up {
+      gap: 2rem;
+    }
+  }
+
+  &__item {
+    background-color: var(--White);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: none;
+    border-bottom: none;
+
+    &.accordion__item {
+      border-bottom: none;
+    }
+
+    summary {
+      padding: 1.6rem;
+      background-color: var(--White);
+      border-bottom: none;
+
+      @include lg-up {
+        padding: 2rem 2.5rem;
+      }
+    }
+
+    &[open] {
+      .rn-faq__answer {
+        padding: 0 1.6rem 1.6rem 1.6rem;
+
+        @include lg-up {
+          padding: 0 2.5rem 2rem 2.5rem;
+        }
+      }
+
+      .rn-faq__icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--Dark);
+
+    @include lg-up {
+      font-size: 2rem;
+    }
+
+    &::before,
+    &::after {
+      display: none;
+    }
+
+    &::marker {
+      display: none;
+      font-size: 0;
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    color: var(--Dark);
+
+    @include lg-up {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    svg {
+      width: 1.4rem;
+      height: 0.8rem;
+
+      @include lg-up {
+        width: 1.8rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  &__answer {
+    gap: 0.8rem;
+    padding-left: 1.6rem;
+
+    @include lg-up {
+      gap: 1.2rem;
+    }
+
+    p {
+      font-size: 1.4rem !important;
+      font-weight: 400;
+      line-height: 1.57;
+      color: #5D5D5D !important;
+      letter-spacing: -0.042rem;
+
+      @include lg-up {
+        font-size: 1.8rem !important;
+        line-height: 1.5;
+      }
+
+      em {
+        font-style: italic;
+        font-weight: 600;
+      }
+    }
+  }
+}

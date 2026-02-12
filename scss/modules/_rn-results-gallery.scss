@@ -1,0 +1,135 @@
+.rn-results-gallery {
+  background-color: #F0F7FF;
+  padding: 4rem 0;
+
+  @include md-up {
+    padding: 8rem 0;
+  }
+
+  @include lg-up {
+    padding: 9rem 0;
+  }
+
+  .container {
+    width: min(100% - 2rem, 128.3rem);
+    margin-left: auto;
+    margin-right: 0;
+    gap: 4rem;
+    @include lg-up{
+      width: min(100% - 4rem, 128.3rem);
+      margin-right: auto;
+      gap: 7rem;
+    }
+    display: flex;
+    flex-direction: column;
+   
+    
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    color: #0f172a;
+    margin: 0;
+     text-align: left;
+    grid-area: title;
+
+    @include md-up {
+      font-size: 4rem;
+      text-align: center;
+    }
+  }
+
+  &__slider {
+    grid-area: slider;
+  }
+
+  .embla {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .embla__viewport {
+    overflow: hidden;
+  }
+
+  &__item {
+    width: 100%;
+    overflow: hidden;
+
+    @include md-up {
+      border-radius: 2rem;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+
+    @include md-up {
+      margin-top: 4rem;
+      gap: 3rem;
+    }
+  }
+
+  .embla__button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    color: #0f172a;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    svg {
+      width: 1.9rem;
+      height: auto;
+      &.desktop{
+        display: none;
+        @include md-up {
+          display: block;
+        }
+      }
+        &.mobile{
+            display: block;
+            @include md-up {
+            display: none;
+            }
+        }
+
+      @include md-up {
+        width: 3.4rem;
+        height: auto;
+      }
+    }
+  }
+
+  .btns-wrp {
+    display: flex;
+    justify-content: flex-start; // Left aligned on mobile and desktop
+    margin-top: 0;
+    grid-area: btn;
+  }
+}

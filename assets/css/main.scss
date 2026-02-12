@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "IvyOraDisplay";
+  src: url("../fonts/IvyOraDisplay-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeuzeitGro";
+  src: url("../fonts/NeuzeitGro-Bol.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NeuzeitGro";
+  src: url("../fonts/NeuzeitGro-Reg.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*General styles only*/
+@import "../../scss/variables-site/variables-site"; // Site variables
+@import "../../scss/mixins/mixins-master"; // Mixins
+@import "../../scss/base/normalize"; // Reset & noramlize
+@import "../../scss/components/components"; // Any custom parts like sliders  -  vimeo
+@import "../../scss/vendors/vendors";
+@import "../../scss/site/site"; // General site parts ( header / footer / breadcrumbs .. )

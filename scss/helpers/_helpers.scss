@@ -1,0 +1,151 @@
+.custom-list-icon {
+  ul {
+    list-style: none;
+    padding: 1.6rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--light-Gray-01);
+    border-radius: var(--border-radius);
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    li {
+      padding-left: 2.6rem;
+      position: relative;
+      @include md-up {
+        padding-left: 3.2rem;
+      }
+      @include lg-up {
+        padding-left: 4rem;
+      }
+      &::before {
+        content: " ";
+        width: 1.8rem;
+        height: 1.8rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="%23040B85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="%23040B85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include md-up {
+          width: 2rem;
+          height: 2rem;
+        }
+        @include lg-up {
+          width: 2.6rem;
+          height: 2.6rem;
+        }
+      }
+    }
+  }
+}
+.customBGimage,
+.customBGimageMobile {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.customBGimage {
+  background-image: var(--bgImage);
+}
+
+.customBGimageMobile {
+  // Mobile-first approach - apply mobile background by default
+  background-image: var(--bgImageMobile);
+
+  @include md-up {
+    // Reset to default background for larger screens if needed
+    background-image: var(--bgImage);
+  }
+}
+
+.hideBgImageMobile {
+  background-image: none; // Mobile-first - hide by default
+
+  @include md-up {
+    background-image: var(--bgImage); // Show on larger screens
+  }
+}
+
+.custom-list-icon-02 {
+  ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding-left: 2.6rem;
+      position: relative;
+      @include md-up {
+        padding-left: 3.2rem;
+      }
+      @include lg-up {
+        padding-left: 4rem;
+      }
+      &::before {
+        content: " ";
+        width: 1.8rem;
+        height: 1.8rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="11" viewBox="0 0 15 11" fill="none"><path d="M14.1663 0.833008L4.99967 9.99967L0.833008 5.83301" stroke="%23040B85" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+        background-size: 1.2rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include md-up {
+          width: 2rem;
+          height: 2rem;
+          background-size: 1.33rem;
+        }
+        @include lg-up {
+          width: 2.6rem;
+          height: 2.6rem;
+          background-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+br.mob-only {
+  display: block;
+  @include md-up {
+    display: none;
+  }
+}
+
+.padding-block-90 {
+  padding-block: 4rem;
+  @include lg-up {
+    padding-block: 9rem;
+  }
+}
+.darkBLue-bg {
+  background-color: var(--Deep-Blue);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul li,
+  a {
+    color: var(--white);
+  }
+}
+
+.lightBlue-bg {
+  background-color: var(--Light-Blue);
+}
+picture{
+  display: block;
+}

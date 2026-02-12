@@ -1,0 +1,69 @@
+@import "../mixins/mixins-master";
+:root {
+  --screen-xs-min: 385px; // Tiny phones
+  --screen-sm-min: 391px; // Small tablets and large smartphones (landscape view)
+  --screen-md-min: 768px; // Small tablets (portrait view)
+  --screen-lg-min: 1024px; // Tablets and small desktops
+  --screen-lg-min: 128px; // Large tablets and desktops
+  --screen-xxl-min: 1700px;
+
+  --Primary: #1344b5;
+  --Primary-2: #002989;
+  --Secondary: #ffbd86;
+  --Secondary-2: #9e5d37;
+  --Secondary-3: #fff5eb;
+  --Black: #0f172a;
+  --White: #fff;
+
+  --font-text: "Instrument Sans", system-ui, sans-serif;
+
+  --font__size_base: 16px;
+  --font__line-height-body: 120%;
+
+  --rn-block-gap__sm: 5.5rem;
+  --rn-block-gap__md: 6rem;
+  --rn-block-gap__lg: 12rem;
+  --block-gap: var(--rn-block-gap__sm);
+  @include md-up {
+    --block-gap: var(--rn-block-gap__md);
+  }
+  @include lg-up {
+    --block-gap: var(--rn-block-gap__lg);
+  }
+
+  --border-radius: 1rem;
+  @include lg-up {
+    --border-radius: 1.5rem;
+  }
+
+  --rn-body-font-sm: 1.4rem;
+  --rn-body-font-md: 2rem;
+
+  --body-font: var(--rn-body-font-md);
+  --body-font-sm: var(--rn-body-font-sm);
+  @include md-up {
+    --body-font: var(--rn-body-font-md);
+    --body-font-sm: var(--rn-body-font-md);
+  }
+
+  --rn-font-s: 1.4rem;
+  --rn-font-s-lg: 1.6rem;
+  --body-font-s: var(--rn-font-s);
+  @include lg-up {
+    --body-font-s: var(--rn-font-s-lg);
+  }
+
+  --rn-btn-font-sm: 1.48rem;
+  --rn-btn-font-lg: 2rem;
+  --btn-font: var(--rn-btn-font-sm);
+  @include lg-up {
+    --btn-font: var(--rn-btn-font-lg);
+  }
+
+  --h2_font-size-sm: 3rem;
+  --h2_font-size-md: 4rem;
+  --h2_font-size: var(--h2_font-size-sm);
+  @include md-up {
+    --h2_font-size: var(--h2_font-size-md);
+  }
+}

@@ -1,0 +1,207 @@
+.rn-appointment-confirmation {
+  padding: 5rem 0;
+  background-color: var(--Secondary-3);
+  overflow: hidden;
+
+  .rn-ac-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+    text-align: center;
+    color: var(--Black);
+    margin-bottom: 3rem;
+
+    @include md-up {
+      font-size: 4rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  .rn-ac-card {
+    background-color: var(--Secondary);
+    border: 1px solid var(--Black);
+    border-radius: 1.6rem;
+    padding: 2.3rem 1.2rem;
+    margin: 0 auto 5rem;
+    max-width: 97rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    @include md-up {
+      padding: 6rem 3rem;
+      border-width: 0.15rem; // ~1.5px
+    }
+
+    &__header {
+      background-color: var(--Black);
+      border-radius: 3.2rem;
+      width: 100%;
+      max-width: 34.3rem;
+      min-height: 3.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+
+      span {
+        color: var(--Secondary);
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 1.4;
+        text-align: center;
+      }
+
+      @include md-up {
+        max-width: 90rem;
+        min-height: 10rem;
+        margin-bottom: 4rem;
+
+        span {
+          font-size: 4.7rem; // ~47px
+        }
+      }
+    }
+
+    &__body {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      width: 100%;
+
+      @include md-up {
+        gap: 3rem;
+      }
+    }
+
+    &__row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+
+      @include md-up {
+        gap: 2rem;
+      }
+    }
+
+    &__icon {
+      width: 2.3rem;
+      height: 2.3rem;
+      flex-shrink: 0;
+      color: var(--Black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        stroke-width: 1.5;
+        overflow: visible;
+      }
+
+      @include md-up {
+        width: 6rem;
+        height: 6rem;
+      }
+    }
+
+    &__text {
+      font-size: 1.5rem; // 15px
+      font-weight: 700;
+      color: var(--Black);
+      line-height: 1.5; // ~22.9px
+      padding-top: 0.2rem; // alignment adjustment to match icon center visually sometimes
+
+      @include md-up {
+        font-size: 3.9rem; // ~39.5px
+        line-height: 1.5; // ~60px
+        padding-top: 0;
+      }
+    }
+  }
+
+  .rn-ac-next-steps {
+    text-align: center;
+
+    &__title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--Black);
+      margin-bottom: 3rem;
+      line-height: 1.2;
+
+      @include md-up {
+        font-size: 4rem;
+        margin-bottom: 4rem;
+      }
+    }
+
+    &__cta {
+      font-size: 1.4rem;
+      color: var(--Primary); // #1344b5
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03rem;
+      line-height: 1.4;
+
+      @include md-up {
+        font-size: 2.2rem;
+      }
+    }
+
+    &__sub {
+      font-size: 1.4rem;
+      color: var(--Black);
+      margin-bottom: 3rem;
+      line-height: 1.5;
+
+      @include md-up {
+        font-size: 2.2rem;
+      }
+    }
+  }
+
+  .rn-ac-calendars {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+
+    @include md-up {
+      gap: 6rem;
+    }
+  }
+
+  .rn-ac-calendar-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+    color: var(--Black);
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    img {
+      width: 14.4rem;
+      height: auto;
+
+      @include md-up {
+        width: 20.8rem;
+      }
+    }
+
+    span {
+      font-size: 1.4rem;
+
+      @include md-up {
+        font-size: 2rem;
+      }
+    }
+  }
+}

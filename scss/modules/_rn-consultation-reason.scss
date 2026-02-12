@@ -1,0 +1,57 @@
+.rn-consultation-reason {
+  background-color: var(--Black);
+  color: var(--White);
+  padding: 5rem 0;
+
+  @include md-up {
+    padding: 10rem 0;
+    text-align: center;
+  }
+
+  .rn-cr-title {
+    font-size: 3rem;
+    line-height: 1.2; // 36px/30px = 1.2
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: var(--White);
+
+    @include md-up {
+      font-size: 4rem; // 40px
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  .rn-cr-content {
+    font-size: 1.4rem; // 14px
+    line-height: 1.57; // 22px / 14px approx 1.57
+    max-width: 35.3rem;
+    margin: 0 auto;
+
+    @include md-up {
+      font-size: 2rem;
+      line-height: 1.5;
+      max-width: 80rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    strong {
+      font-weight: 700;
+      display: block; // Keep it on its own block/line if needed, or inline if flow requires
+      margin-bottom: 1.5rem; // Add space between the bold part and regular part as per screenshot look
+
+      @include md-up {
+        margin-bottom: 2rem;
+        max-width: 49rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}

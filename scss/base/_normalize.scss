@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  @include box-sizing(border-box);
+}
+
+html {
+  @include box-sizing(border-box);
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  // -webkit-font-smoothing: antialiased;
+  // font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--Errigal-White);
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: var(--Black);
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+
+  img {
+    outline: none;
+    border: none;
+  }
+}
+
+input,
+textarea,
+select,
+button {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  resize: none;
+  font-family: var(--font-text);
+}
+
+picture {
+  font-size: 0;
+}
+
+h1 {
+  font-family: var(--font-titles);
+  font-size: var(--h1_font-size);
+  font-weight: 500;
+  line-height: 120%;
+}
+
+h2 {
+  font-family: var(--font-titles);
+  font-size: var(--h2_font-size);
+  color: var(--Deep-Blue);
+  font-weight: 500;
+  line-height: 120%;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-titles);
+  font-size: var(--body-font);
+  line-height: 111%;
+}
+
+p,
+ul li,
+a,
+button,
+table td,
+table th {
+  font-size: var(--body-font);
+  line-height: 120%;
+  line-height: 142%;
+  font-weight: 400;
+  strong {
+    font-weight: 500;
+  }
+}

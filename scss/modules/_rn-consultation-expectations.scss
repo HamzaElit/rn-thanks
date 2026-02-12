@@ -1,0 +1,113 @@
+.rn-consultation-expectations {
+  background-color: var(--Secondary-3);
+  padding: 5rem 0;
+
+  @include md-up {
+    padding: 10rem 0;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--Black);
+    margin-bottom: 2rem;
+
+    @include md-up {
+      font-size: 4rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__sub {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--Black);
+    max-width: 98rem;
+    margin: 0 auto 4rem;
+
+    @include md-up {
+      font-size: 2.2rem;
+      margin-bottom: 8rem;
+    }
+
+    strong {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__grid {
+    max-width: 103rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 3rem;
+
+    @include md-up {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 7.5rem; // ~75px based on spacing
+      row-gap: 0; // Gap is handled by padding/borders
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(#000, 0.1); // Approximation of the line
+
+    @include md-up {
+      padding-bottom: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    // Remove border for the last item on mobile
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    // Desktop: Remove borders for the last row items (5 and 6)
+    @include md-up {
+      &:nth-last-child(-n + 2) {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      // Ensure items 1, 2, 3, 4 have borders if we use grid
+      // But purely nth-child logic depends on accurate count. We have 6 items.
+      // 1, 2 -> Row 1 (Border)
+      // 3, 4 -> Row 2 (Border)
+      // 5, 6 -> Row 3 (No Border)
+    }
+  }
+
+  &__item-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--Primary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+
+    @include md-up {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__item-desc {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--Black);
+
+    @include md-up {
+      font-size: 2.2rem;
+    }
+  }
+}
